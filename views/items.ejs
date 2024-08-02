@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>categories</title>
+</head>
+<body>
+    <h1>welcome to the categories page</h1>
+    <h3>categories</h3>
+    <div class="items">
+        <% items.rows.map((item)=>{ %>
+           <div class="item">
+               <h3><%= item.name %></h3>
+               <img src= <%= item.image_url %> alt=<%= item.name %> >
+               <p>description <%= item.description %> </p>
+               <p>Price : <%= category.price %></p>
+           </div>
+
+       <% }) %> 
+   </div>
+</body>
+</html>

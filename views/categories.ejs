@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>categories</title>
+</head>
+<body>
+    <h1>welcome to the categories page</h1>
+    <h3>categories</h3>
+    <ul>
+         <% categories.rows.map((category)=>{ %>
+            <% const category_delete_url = '/categories/delete/' + category.id %>
+            <li><%= category.name %></li>
+            <form action=<%= category_delete_url %> method="post">
+                <button type="submit" >delete</button>
+            </form>
+        <% }) %> 
+    </ul>
+    <h2>add new category</h2>
+    <form action="/new/category" method="post">
+        <label for="category">category</label>
+        <input name="category" id="category">
+        <button type="submit">submit</button>
+    </form>
+
+    <a href="/">go back to home</a>
+</body>
+</html>

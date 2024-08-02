@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/new/item" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="name">name</label>
+            <input type="text" name="name">
+        </div>
+
+        <div>
+            <label for="price">price</label>
+            <input type="text" name="price">
+        </div>
+
+        <div>
+            <label for="">description</label>
+            <input type="text" name="description">
+        </div>
+        <div>
+            <label for="">category</label>
+            <select name="category" id="category">
+                <% categories.rows.map ( (category)=>{ %>
+                    <option value="<%= category.id %>" ><%= category.name %></option>
+                <% }) %>
+            </select>
+            <label for="filename">uplaod the image of the item</label>
+            <input type="file" id="myFile" name="image_url">
+            <input type="submit">
+        </div>
+
+    </form>
+</body>
+</html>
