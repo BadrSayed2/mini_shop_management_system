@@ -6,18 +6,33 @@
     <title>categories</title>
 </head>
 <body>
-    <h1>welcome to the categories page</h1>
-    <h3>categories</h3>
+    <h1>welcome to the items page</h1>
+    <h3>items</h3>
+    <a href="/">go to home page</a>
     <div class="items">
-        <% items.rows.map((item)=>{ %>
-           <div class="item">
-               <h3><%= item.name %></h3>
-               <img src= <%= item.image_url %> alt=<%= item.name %> >
-               <p>description <%= item.description %> </p>
-               <p>Price : <%= category.price %></p>
+        <% items.rows.map((item) => { %>
+            <div class="item">
+              <h3><%= item.name %></h3>
+              <!-- Corrected img tag syntax -->
+              <img 
+                src="public/images/<%= item.image_url %>" 
+                width="250" 
+                height="250" 
+                alt="<%= item.name %>" 
+              />
+              <p>Description: <%= item.description %></p>
+              <p>Price: <%= item.price %></p>
+              <h4>category : <%=item.category_name %></h4>
+            </div>
+         
+               <% const item_delete_url = '/items/delete/' + item.id %>
+               <form method="post" action= <%= item_delete_url %> >
+                    <button type="submit" >delete</button>
+                </form>
            </div>
 
        <% }) %> 
+
    </div>
 </body>
 </html>

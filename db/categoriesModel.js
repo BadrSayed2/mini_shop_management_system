@@ -1,4 +1,4 @@
-import pool from "./migratioon.js";
+import pool from "./migration.js";
 
 async function get_categories(){
     const sql = `SELECT * FROM categories ;`

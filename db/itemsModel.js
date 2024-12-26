@@ -1,14 +1,26 @@
-import pool from "./migratioon.js";
+import pool from "./migration.js";
 
 async function get_items(){
-    const sql = `SELECT * FROM items ;`
+    const sql = `SELECT items.id , items.name , items.price , items.description , items.image_url , categories.name as category_name 
+    FROM items
+    JOIN categories 
+    ON items.category_id = categories.id; `
     return await pool.query(sql);
     
 }
 
-async function delete_item(item_name){
-    item_name = '\'' + item_name + '\'';
-    const sql = `DELETE FROM items WHERE name = ` + item_name + `;`
+async function get_item_by_id(item_id){
+    const sql = `SELECT items.id , items.name , items.price , items.description , items.image_url , categories.name as category_name 
+    FROM items
+    JOIN categories 
+    ON items.category_id = categories.id
+    WHERE items.id = `+item_id+`;`
+    return await pool.query(sql);
+    
+}
+
+async function delete_item(item_id){
+    const sql = `DELETE FROM items WHERE id = ` + item_id + `;`
     await pool.query(sql);
 }
 
@@ -30,4 +42,4 @@ async function update_item(item_name , item_new_name){
     await pool.query(sql);
 }
 
-export  { get_items , delete_item , add_new_item , update_item} 
+export  { get_items , delete_item , add_new_item , update_item , get_item_by_id} 
