@@ -35,5 +35,6 @@ CONSTRAINT fk FOREIGN KEY (category_ID )REFERENCES categories(id)
 
 // pool.query(categoriesTableQuery + itemsTableQuery);
 
+
 export default pool;
 // console.log(tableQuery);
